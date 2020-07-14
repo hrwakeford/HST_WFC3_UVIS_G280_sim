@@ -20,7 +20,7 @@ def find_nearest(array, value):
 
 def transit_depth_precision(wavelength,spectrum,wav_range,exptransit):
 	wav_range = np.where((wavelength > wav_range[0]) & (wavelength < wav_range[1]))[0]
-	# print(wav_range)
+
 	total_sig = np.sum(spectrum[wav_range])
 	precision = 1/np.sqrt(total_sig)
 	depth_err_ppm = (precision/np.sqrt(exptransit))*1e6
@@ -92,7 +92,7 @@ def UVIS_simulation(data_folder, file_name, exposure_time, orbits_in_transit, no
 
 	'''
 	# UVIS spectral bins for simulation
-	# Note Wakeford et al. (2020) used bins of 100 angstrom by
+	# Note Wakeford et al. (2020, AJ) used bins of 100 angstrom by
 	# combining two transits of the hot Jupiter HAT-P-41b
 	nbins = (endw - startw) / binlen
 	wav_topbot = np.linspace(startw, endw, nbins)
@@ -175,21 +175,15 @@ def UVIS_simulation(data_folder, file_name, exposure_time, orbits_in_transit, no
 if __name__ == '__main__':    
 
 	data_folder = '' 
-
 	file_name = ['H41_ETC'] 
 
 	exposure_time = [190] 
-
 	orbits_in_transit = [2] 
-
 	no_of_transits = [2] 
 	
 	wl = [2000,8000]
-	
 	startw = 2000
-	
 	endw = 8000
-	
 	binlen = 100
 
 	out_name = '10nm_transmission'
